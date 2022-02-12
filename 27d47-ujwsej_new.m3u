@@ -1,0 +1,48 @@
+#EXTM3U url-tvg="http://bit.ly/kodiEPGAz" x-tvg-url="http://bit.ly/kodiEPGAz"
+
+#EXTINF:0 tvg-name="TV1" tvg-ID="TV1.HD.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/395_144.png" group-title="MY-AR",TV1
+https://rtmlive01.secureswiftcontent.com/rtmchannel/01-1080.m3u8|Referer=https://myklik.rtm.gov.my
+
+#EXTINF:0 tvg-name="TV2" tvg-ID="tv2.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/396_144.png" group-title="MY-AR",TV2
+https://rtmlive05.secureswiftcontent.com/rtmchannel/05-1080.m3u8|Referer=https://myklik.rtm.gov.my
+
+#EXTINF:0 tvg-name="RTM Sport" tvg-ID="tvsukan.my" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b2/Sukan_RTM_1_April.png" group-title="MY-AR",RTM Sport
+https://rtmlive06.secureswiftcontent.com/rtmchannel/06-1080.m3u8|Referer=https://myklik.rtm.gov.my
+
+#EXTINF:0 tvg-name="RTM NEWS" tvg-ID="berita.rtm.my" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/04/Berita_RTM_v1.png" group-title="MY-AR",RTM NEWS
+https://rtmlive03.secureswiftcontent.com/rtmchannel/03-1080.m3u8
+
+#EXTINF:0 tvg-name="TV6" tvg-logo="https://myklikstatic.secureswiftcontent.com/image/TV6-PlayerLogo-JPG.jpg" group-title="MY-AR",TV6
+https://rtmlive07.secureswiftcontent.com/rtmchannel/07-1080.m3u8
+
+#EXTINF:0 tvg-name="Okey" tvg-ID="TV.Okey.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/97_144.png" group-title="MY-AR",Okey
+https://rtmlive02.secureswiftcontent.com/rtmchannel/02-1080.m3u8
+
+#EXTINF:0 tvg-name="TVS" tvg-ID="TVS.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/429_144.png" group-title="MY-AR",TVS
+https://agsplayback01.astro.com.my/CH1/master_AGS_TVS.m3u8
+
+#EXTINF:0 tvg-name="TV3" tvg-ID="tv3.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/106_144.png" group-title="MY-AR",TV3
+https://raw.githubusercontent.com/samleong123/tonton_dailymotion_php/main/m3u8/TV3.m3u8
+
+#EXTINF:0 tvg-name="TV9" tvg-ID="tv9.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/48_144.png" group-title="MY-AR",TV9
+https://raw.githubusercontent.com/samleong123/tonton_dailymotion_php/main/m3u8/TV9.m3u8
+
+#EXTINF:0 tvg-name="NTV7" tvg-ID="ntv7.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/93_144.png" group-title="MY-AR",NTV7
+https://raw.githubusercontent.com/samleong123/tonton_dailymotion_php/main/m3u8/DidikTVKPM.m3u8
+
+#EXTINF:0 tvg-name="8TV" tvg-ID="8tv.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/115_144.png" group-title="MY-AR",8TV
+https://raw.githubusercontent.com/samleong123/tonton_dailymotion_php/main/m3u8/8TV.m3u8|Referer=https://www.dailymotion.com
+
+#EXTINF:0 tvg-name="Drama Sangat" tvg-logo="https://i.imgur.com/cTzLBiQ.jpg" group-title="MY-AR",Drama Sangat
+https://raw.githubusercontent.com/samleong123/tonton_dailymotion_php/main/m3u8/Drama_Sangat.m3u8
+
+#EXTINF:0 tvg-name="TV Alhijrah" tvg-ID="Al-Hijrah.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/149_144.png" group-title="MY-AR",TV Alhijrah
+http://50.7.161.82:8278/streams/d/Alhijrah/playlist.m3u8
+
+
+
+
+#EXTINF:0 tvg-name="Makkah TV" tvg-logo="https://www.makkahtv.com/wp-content/uploads/2019/08/MakkahTV.png" group-title="MY-AR",Makkah TV
+http://makkahtv.srfms.com:1935/makkahtv/livestream/playlist.m3u8
+
+
