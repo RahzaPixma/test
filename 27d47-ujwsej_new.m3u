@@ -18,6 +18,9 @@ https://rtmlive07.secureswiftcontent.com/rtmchannel/07-1080.m3u8
 #EXTINF:0 tvg-name="Okey" tvg-ID="TV.Okey.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/97_144.png" group-title="MY-AR",Okey
 https://rtmlive02.secureswiftcontent.com/rtmchannel/02-1080.m3u8
 
+#EXTINF:0 tvg-name="Okey_B" tvg-ID="TV.Okey.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/97_144.png" group-title="MY-AR",Okey_B
+https://rtmlive02tv.secureswiftcontent.com/rtmchannel/02-manifest.mpd
+
 #EXTINF:0 tvg-name="TVS" tvg-ID="TVS.my" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/429_144.png" group-title="MY-AR",TVS
 https://agsplayback01.astro.com.my/CH1/master_AGS_TVS.m3u8
 
