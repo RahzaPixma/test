@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Regal Calendar SQL</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/weather-icons.min.css">
+		<link rel="stylesheet" href="css/animations.css">
+		<link rel="stylesheet" href="css/RegalCalendar.css">
+		<link href="css/github.css" rel="stylesheet" />
+		<script src="js/lib/rainbow-custom.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		<script src="js/lib/require.js"></script>
+		<script src="js/lib/init.js"></script>
+		<script>
+			requirejs(libs, function($) {
+					$('#calendar').RegalCalendar({
+						base: 'white',
+						color: '#FF5987',
+						editable: true,
+						eventsPosition: 'tooltip'
+					});
+			});
+		</script>
+		<style>
+			body {
+				background: url('img/pink_rice.png') repeat;
+			}
+			.section-heading {
+				margin-top: 70px;
+			}
+			h5 {
+				text-align: left;
+			}
+			p i {
+				margin-right: 10px;
+				color: #FF5987;
+			}
+			.container-fluid {
+				background: #FF5987;
+			}
+			.navbar-default .navbar-brand {
+				color: #FFF;
+			}
+			p.feature {
+				margin: 0;
+				padding: 0;
+				font-weight: bold;
+				color: #555;
+			}
+			pre, code, p.feature {
+				text-align: left;
+			}
+			
+		</style>
+	</head>
+	<body id="page-top">
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top">Regal Calendar SQL</a>
+				</div>
+			</div>
+		</nav>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Editable calendar</h2>
+						<hr class="primary">
+						<div id="calendar" class="regalcalendar"></div>
+						<p class="feature">
+							<i class="fa fa-paw"></i>Events are shown through tooltips</p>
+						<p class="feature">
+							<i class="fa fa-paw"></i>Add, delete actions enabled</p>
+						<pre>
+							<code data-language="html">&lt;script> 
+	$('#calendar').RegalCalendar({ 
+		base: 'white', 
+		color: '#FF5987', 
+		editable: true, 
+		eventsPosition: 
+		'tooltip' 
+	}); 
+&lt;/script></code>
+						</pre>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>

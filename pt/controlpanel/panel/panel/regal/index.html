@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Regal Calendar SQL</title>
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Custom Fonts -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300">
+		<link rel="stylesheet" href="css/creative.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/weather-icons.min.css">
+		<link rel="stylesheet" href="css/RegalCalendar.css">
+		<link rel="stylesheet" href="css/bootstrap-colorpicker.min.css">
+		<link rel="stylesheet" href="css/prettyPhoto.css">
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		<script src="js/lib/require.js"></script>
+		<script src="js/lib/main.js"></script>
+		<style>
+			header {
+				color: #EFEFEF;
+				background-color: #000;
+			}
+			#mainNav {
+				z-index: 10001
+			}
+			.lh {
+				line-height: 2.5;
+				text-align: left;
+			}
+			.theme {
+				text-align: left;
+			}
+			#color {
+				display: none;
+			}
+			.input-group-addon:last-child {
+				border-left: 1px solid #CCC;
+				border-radius: 0;
+			}
+			#base {
+				width: 100px;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.colorpicker {
+				width: 50px;
+				display: inline-block;
+			}
+			.change {
+				height: 31px;
+				vertical-align: top;
+			}
+			.navbar-default.affix .navbar-header .navbar-brand, .navbar-default .nav > li.active>a, .navbar-default .nav>li.active>a:focus {
+				color: #CCC !important;
+			}
+			.btn-primary {
+				background-color: #050505;
+				border-color: #686868;
+			}
+			
+		</style>
+	</head>
+	<body id="page-top">
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top">Regal Calendar SQL</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a class="page-scroll" href="#features">Features</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#action">In action</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#support">Support</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#demos">Demos</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#portfolio">Portfolio</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<header>
+			<div class="header-content">
+				<div class="header-content-inner">
+					<h2>Introducing Regal Calendar SQL</h2>
+					<hr class="primary">
+					<p>Complete event calendar solution that displays events in a friendly and attractive way. Shows the time in which the events take place (countdown), the map, the current climate of the place, with twitter enabled and many other features.</p>
+				</div>
+			</div>
+		</header>
+		<section class="bg-primary" id="features">
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<h2 class="section-heading text-center">Features</h2>
+						<hr class="light">
+						<ul class="lh">
+							<li>Visually appealing and easy to use.</li>
+							<li>Stores events in a MySQL or SQLite database.</li>
+							<li>Displays the event location via Google maps.</li>
+							<li>Includes editable option. You can add and delete events using the calendar.</li>
+							<li>Informs about the current weather in the place where the event occurs.</li>
+							<li>Shows time of the event and a countdown clock.</li>
+							<li>API returns events of the month, selected event and current date.</li>
+							<li>Displays inline events or via tooltips.</li>
+							<li>Can select any color scheme.</li>
+							<li>Responsive design.</li>
+							<li>Twitter enabled.</li>
+						</ul>
+						<a href="#" class="btn btn-default btn-xl text-center">Get Started!</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="action">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">In action</h2>
+						<hr class="primary">
+						<div class="theme">
+							<select id="base" class="form-control">
+								<option value="white">white</option>
+								<option value="dark">dark</option>
+							</select>
+							<div class="input-group colorpicker">
+								<input id="color" type="text" value="#9EC02B" class="form-control" />
+								<span class="input-group-addon">
+									<i></i>
+								</span>
+							</div>
+							<button class="change">Change</button>
+						</div>
+						<div id="calendar" class="regalcalendar"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="support" class="bg-primary">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Support</h2>
+						<hr class="light">
+						<div class="row">
+							<div class="col-lg-3 col-md-6 text-center">
+								<div class="service-box">
+									<img src="img/ie.png" class="wow bounceIn text-primary" data-wow-delay=".3s" />
+									<h3>Internet Explorer</h3>
+									<p>9+</p>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 text-center">
+								<div class="service-box">
+									<img src="img/safari.png" class="wow bounceIn text-primary" data-wow-delay=".3s" />
+									<h3>Safari</h3>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 text-center">
+								<div class="service-box">
+									<img src="img/ff.png" class="wow bounceIn text-primary" data-wow-delay=".3s" />
+									<h3>Mozilla Firefox</h3>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6 text-center">
+								<div class="service-box">
+									<img src="img/chrome.png" class="wow bounceIn text-primary" data-wow-delay=".3s" />
+									<h3>Google Chrome</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="" id="demos" style="border-top: 3px solid #222;">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Demos</h2>
+					<hr class="primary">
+					<div class="container-fluid">
+						<div class="row no-gutter">
+							<div class="col-lg-3 col-sm-6">
+								<a href="editable.html" class="portfolio-box" target="_blank">
+									<img src="img/demo1.png" class="img-responsive" alt="">
+									<div class="portfolio-box-caption">
+										<div class="portfolio-box-caption-content">
+											<div class="project-category text-faded">Demo 1</div>
+											<div class="project-name">Editable</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-lg-3 col-sm-6">
+								<a href="inline.html" class="portfolio-box" target="_blank">
+									<img src="img/demo2.png" class="img-responsive" alt="">
+									<div class="portfolio-box-caption">
+										<div class="portfolio-box-caption-content">
+											<div class="project-category text-faded">Demo 2</div>
+											<div class="project-name">Inline</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-lg-3 col-sm-6">
+								<a href="compact.html" class="portfolio-box" target="_blank">
+									<img src="img/demo3.png" class="img-responsive" alt="">
+									<div class="portfolio-box-caption">
+										<div class="portfolio-box-caption-content">
+											<div class="project-category text-faded">Demo 3</div>
+											<div class="project-name">Compact</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-lg-3 col-sm-6">
+								<a href="grid.html" class="portfolio-box" target="_blank">
+									<img src="img/demo4.png" class="img-responsive" alt="">
+									<div class="portfolio-box-caption">
+										<div class="portfolio-box-caption-content">
+											<div class="project-category text-faded">Demo 4</div>
+											<div class="project-name">Grid</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="portfolio" class="bg-primary">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 text-center">
+						<h2 class="section-heading">Other interesting items</h2>
+						<hr class="primary">
+						<a href="http://codecanyon.net/user/arkord/portfolio" class="btn btn-default btn-xl wow tada">Portfolio</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>

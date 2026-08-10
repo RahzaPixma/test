@@ -1,0 +1,38 @@
+;kodlokasi (zon)
+[zon]
+zon = 20
+lokasi = Kuala Lumpur
+
+; jangkasamasa waktu iqomah (dlm minit) 
+[countdown]
+iqomah_subuh = 10
+iqomah_zohor = 20
+iqomah_asar = 8
+iqomah_maghrib = 7
+iqomah_isyak = 6
+waktublinking = 5
+
+
+
+;offset utk tahun hijrah (+1, 0, or -1)
+;hijri_offset = +1
+;hijri_offset = 0
+;hijri_offset = -1
+[hijri]
+hijri_offset = 0
+
+;duration transition (dlm saat)
+[duration]
+taqwim = 30
+slide = 5
+solat = 600
+masukwaktu = 10
+worldclock = 15
+
+[video]
+azanvideo = azanmadinah.mp4
+azanvideosubuh = azanmadinahsubuh.mp4
+[sound]
+beepsound = beepbeep.mp4
+azansound = azanmekah.mp3
+azansoundsubuh = azanmekahsubuh.mp3

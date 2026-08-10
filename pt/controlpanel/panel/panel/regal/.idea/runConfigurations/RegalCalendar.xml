@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RegalCalendar" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="Apache" start_url="http://localhost:82/RegalCalendarSQL/php/GetCalendar.php">
+    <method />
+  </configuration>
+</component>

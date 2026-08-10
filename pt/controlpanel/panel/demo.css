@@ -1,0 +1,41 @@
+*{
+	font-size:12px;
+}
+body {
+    font-family:verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:12px;
+    margin:0;
+}
+h2 {
+    font-size:18px;
+    font-weight:bold;
+    margin:0;
+    margin-bottom:15px;
+}
+.demo-info{
+	padding:0 0 12px 0;
+}
+.demo-tip{
+	display:none;
+}
+
+.form-style-9{
+    max-width: 90%;
+    background: #FAFAFA;
+    padding: 10px;
+    margin: 10px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #305A72;
+}
+
+.form-style-main{
+    max-width: 90%;
+    background: #FAFAFA;
+    padding: 10px;
+    margin: 10px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 0px;
+    border: 6px solid #305A72;
+}

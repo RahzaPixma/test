@@ -1,0 +1,1 @@
+update template_kuliah set header='CERAMAH UMUM',tarikh='2016-08-19',tajuk='Cinta Rasul',hari='JUMAAT',waktu='Lepas Isyak',penceramah='Ust Dr. Mohd Sukki Othman',tempat='',catatan='(Lembaga Zakat Selangor)',susunan=2,status=1,filetemplate='ceramah.jpg',show_slide='Slide',file_slide='', masa='23:59', batal=1 where id=2

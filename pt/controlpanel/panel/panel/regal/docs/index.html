@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Documentation</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' />
+		<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' />
+		<link href="css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/creative.css" rel="stylesheet" />
+		<link href="css/github.css" rel="stylesheet" />
+		<script src="js/rainbow-custom.min.js"></script>
+		
+		<style>
+			.bg-primary {
+				color: #732828;
+			}
+			.regalcalendar {
+				margin-right: 11%;
+				display: inline-block;
+			}
+			.rg-icons code {
+				display: inline-block;
+				width: 180px;
+			}
+			.rg-icons div {
+				display: inline-block;
+				margin: 0;
+				width: 30px !important;
+				height: 20px !important;
+				position: static;
+			}
+			.row img, .row table {
+				width: 95%;
+			}
+			.row table {
+				margin: 0 auto;
+			}
+			p {
+				margin: 0;
+				padding: 0 35px;
+			}
+			.no-padding {
+				padding: 0;
+			}
+			h3 {
+				margin-bottom: 50px;
+				border-top: 1px solid rgba(255, 255, 255, .3);
+				padding: 20px 0;
+				background: #F05F40;
+				color: #FFF;
+			}
+			.capture {
+				margin: 20px auto;
+				display: block;
+			}
+			.navbar-inverse {
+				color: #FFF;
+			}
+			#customization {
+				padding: 0;
+			}
+			i {
+				margin-right: 10px;
+				color: #F05F40;
+			}
+			
+		</style>
+	</head>
+	<body id="page-top">
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top">Regal Calendar SQL</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a class="page-scroll" href="#usage">Usage</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#database">Data</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#send">Send emails</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#import">Import</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#twitter">Twitter</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#weather">Weather</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#calendar">Calendar</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#api">API</a>
+						</li>
+						<li>
+							<a class="page-scroll" href="#customization">Customization</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<section class="bg-primary" id="usage">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading light" style="color:#FFF">Usage</h2>
+						<hr class="light">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="no-padding" id="data">
+			<h3 class="section-heading text-center" id="database">Get started with database</h3>
+			<p>
+				<i class="fa fa-paw"></i>RegalCaledarSQL stores all events in a database, either SQLite or MySQL if you prefer.</p>
+			<p>
+				<i class="fa fa-paw"></i>The database contains two tables, "events" and "subscriptions". Table "events" stores detailed information about the events. Table "subscriptions" contains the email and name of the person subscribed to the event. </p>
+			<p>
+				<i class="fa fa-paw"></i>The package contains a sample SQLite database, so you can simply start to use it, and a file *.sql to create the database for MySQL.</p>
+			<img src="img/databases.png" alt="databases" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>In order to use SQLite simply, ensure you have PHP
+				<a href="#">sqlite extension</a>. Verify the file
+				<code>regalcalendar.sqlite</code>is in
+				<code>datasource</code>folder.</p>
+			<p>
+				<i class="fa fa-paw"></i>Set database type to sqlite and database file path in the file
+				<code>php/Source/Config.php</code>
+			</p>
+			<pre>
+				<code data-language="php">
+				
+/* SQLite configuration */
+&lt;?php
+    const DATABASE_TYPE = 'sqlite'; // database type, can be mysql or sqlite
+    const DATABASE_PATH = '../datasource/regalcalendar.sqlite'; // path of SQLite database file
+?&gt;
+				
+				</code>
+			</pre>
+			<p>
+				<i class="fa fa-paw"></i>If you are using MySQL, first run
+				<code>regalcalendar.sql</code>script in order to create database. You can use phpmyadmin to import it.</p>
+			<img src="img/import.png" alt="import" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>Next specify the connection information for database and set DATABASE_TYPE to "mysql" in the file
+				<code>php/Source/Config.php</code>
+			</p>
+			<pre>
+				<code data-language="php">
+				
+/* MySQL configuration */
+&lt;?php
+    const DATABASE_HOST = 'localhost'; // host name or IP address
+    const DATABASE_USERNAME = 'root'; // database username
+    const DATABASE_PASSWORD = ''; // database username password
+    const DATABASE_NAME = 'regalcalendar'; // database name
+    const DATABASE_TYPE = 'mysql'; // database type, can be mysql or sqlite
+?&gt;
+				</code>
+			</pre>
+		</section>
+		<section class="no-padding" id="send">
+			<h3 class="section-heading text-center" style="color:#FFF">Send emails</h3>
+			<p>
+				<i class="fa fa-paw"></i>You can send reminders via email to persons that have subscribed to the events.</p>
+			<p>
+				<i class="fa fa-paw"></i>Set your email server data.</p>
+				<code>php/Source/Config.php</code>
+			<p>
+			<pre>
+				<code data-language="php">
+				
+&lt;?php
+    /* Email configuration */
+    const EMAIL_SERVER = "smtp.gmail.com"; // email server, you can use your gmail account.
+    const EMAIL_PORT = 465; // port
+    const EMAIL_TYPE = "ssl";
+    const EMAIL_USERNAME = "your@username";
+    const EMAIL_PASSWORD = "password";
+    const EMAIL_TEMPLATE = "Source/Templates/template.html"; // html email template file location
+?&gt;
+				</code>
+			</pre>
+			<img src="img/email.png" alt="email" class="capture" />
+		</section>
+		<section class="no-padding" id="import">
+			<h3 class="section-heading text-center" style="color:#FFF">Import *.ics calendar</h3>
+			<p>
+			<i class="fa fa-paw"></i>You can import *.ics Google calendars to your the  database directly.</p>
+			<p>
+			<i class="fa fa-paw"></i>Press import button, select an *.ics file. Click upload and the events will be add to the database.</p>
+			<img src="img/importics.png" alt="newapp" class="capture" />
+			
+		</section>
+		<section class="no-padding" id="twitter">
+			<h3 class="section-heading text-center">Twitter configuration* (optional)</h3>
+			<p>
+				<i class="fa fa-paw"></i>You can enable twitter in your calendar. Users can confirm their attendance to any event or comment about it.</p>
+			<p>
+				<i class="fa fa-paw"></i>Firstly we need to create a new twitter application in order to have the permissions to show tweets. Sign up at
+				<code>https://apps.twitter.com/</code>and create a new app.</p>
+			<img src="img/newapp.png" alt="newapp" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>Give a name to your app, a short description and type your website. If you don't have a site yet just type any url. Accept the agreement.</p>
+			<img src="img/newapp2.png" alt="newapp2" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>You will need some information in order to connect calendar with your new application. You can set the information in the file
+				<code>php/Source/Config.php</code>.</p>
+			<pre>
+				<code data-language="php">
+				
+/* Config.php */
+&lt;?php
+	/* Twitter configuration */
+    const SEARCH_QUERY = 'your twitter user name, or search criteria'; // search criteria
+    const CONSUMER_KEY = 'twitter app consumer key'; // consumer key
+    const CONSUMER_SECRET = 'twitter app consumer secret'; // consumer secret
+    const ACCESS_TOKEN = 'twitter app consumer accesstoken'; // access token
+    const ACCESS_TOKEN_SECRET = 'twitter app consumer accesstoken secret'; // access token secret
+?&gt;
+				</code>
+			</pre>
+			<p>
+				<i class="fa fa-paw"></i>You can find the information in the tab
+				<code>settings</code>
+			</p>
+			<img src="img/keys.png" alt="keys" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>To obtain accesstoken and accesstokensecret, click on the button
+				<code>Create my access token</code>
+			</p>
+			<img src="img/generate.png" alt="generate" class="capture" />
+			<p>
+				<i class="fa fa-paw"></i>Now you have the complete information to connect calendar with your application. Just copy and paste the information.</p>
+			<img src="img/keys2.png" alt="generate" class="capture" />
+		</section>
+		<section class="no-padding" id="weather">
+			<h3 class="section-heading text-center">Weather* (optional)</h3>
+			<p>
+				<i class="fa fa-paw"></i>In order to retrieve the weather of the location of events, you need a connection to
+				<a href="http://openweathermap.org/">openweathermap.org API</a> to query the weather.</p>
+			<p>
+				<i class="fa fa-paw"></i>You can create a free account at
+				<a href="http://home.openweathermap.org/users/sign_up">http://home.openweathermap.org/users/sign_up</a>
+			</p>
+			<p>
+				<i class="fa fa-paw"></i>Sign in and simply copy the API key. Paste API key to the calendar configuration.</p>
+			<img src="img/weatherkey.png" alt="weatherkey" class="capture" />
+			<pre>
+				<code data-language="html">
+&lt;script>
+  $(function() {
+    $('#calendar').RegalCalendar({
+	  apiKey: 'xxxxxxxxxxxxxxxxxxxxxx',
+	  dayPanel: 'inline'
+    });
+  });
+&lt;/script>
+					
+				
+				</code>
+			</pre>
+		</section>
+		<section class="no-padding" id="calendar">
+			<h3 class="section-heading text-center">Set up calendar</h3>
+			<p>
+				<i class="fa fa-paw"></i>Now the database is ready, you can start to use the calendar. Use the required scripts and stylesheets.</p>
+			<p>
+				<i class="fa fa-paw"></i>Create a empty container with
+				<code>class="regalcalendar"</code>in any place of your site.</p>
+			<p>
+				<i class="fa fa-paw"></i>Initialize the calendar with options that you need in your project.</p>
+			<pre>
+				<code data-language="html">
+&lt;head&gt;
+    &lt;!-- events icons --&gt;
+    &lt;link rel="stylesheet" href="css/font-awesome.css">
+	&lt;!-- bootstrap --&gt;
+    &lt;link rel="stylesheet" href="css/bootstrap.min.css">
+    &lt;!-- weather icons --&gt;
+    &lt;link rel="stylesheet" href="css/weather-icons.css">
+    &lt;!-- calendar css --&gt;
+    &lt;link rel="stylesheet" href="css/RegalCalendar.css">
+	
+    &lt;!-- Google maps library --&gt;
+    &lt;script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">&lt;/script>
+    &lt;!-- require js to load scripts --&gt;
+    &lt;script src="js/lib/require.js">&lt;/script>
+	
+    &lt;!-- initialize calendar --&gt;
+    &lt;script>
+	/* dependencies */
+	requirejs.config({
+		baseUrl: 'js/lib',
+		paths: {
+			jquery: "jquery-2.1.4.min",
+			underscore: 'underscore-min'
+		},
+		shim: {
+			'bootstrap.min': ['jquery'],
+			'jquery.easing.1.3': ['jquery'],
+			'jquery.iconpicker': ['jquery'],
+			'jquery.timepicker': ['jquery'],
+			'jquery.qtip': ['jquery'],
+			'jquery.geocomplete.min': ['jquery'],
+			'jquery-ui.min': ['jquery'],
+			'RegalCalendar': ['jquery'],
+			'jquery.ui.touch-punch.min': ['jquery']
+		}
+	});
+	requirejs(['jquery', 'bootstrap.min', 'underscore', 'jquery.easing.1.3', 'jquery.iconpicker', 'jquery.timepicker', 'jquery.qtip', 'jquery.geocomplete.min', 'jquery-ui.min', 'RegalCalendar', 'jquery.ui.touch-punch.min'], function($) {
+		/* Calendar configuration*/
+		$('#calendar').RegalCalendar({
+			base: 'white',
+			color: '#009292',
+			editable: false,
+			eventsPosition: 'inline',
+			itemsPerPage: 2,
+			timeFormat: 'hrs'
+		});
+	});
+    &lt;/script>
+&lt;/head>
+&lt;body&gt;
+    &lt;div id="calendar" class="regalcalendar"&gt;&lt;/div&gt;
+&lt;/body>
+				</code>
+			</pre>
+			<p>Here is the result:</p>
+			<img src="img/sample.png" alt="sample" class="capture" />
+		</section>
+		<section  class="no-padding" id="api">
+			<h3 class="section-heading text-center">API</h3>
+			<p>
+				<i class="fa fa-paw"></i>Use API to retrieve useful information about the events</p>
+			<p>
+				<i class="fa fa-paw"></i><code>GetEvents</code> Retrieves current day events
+			</p>
+			<p>
+				<i class="fa fa-paw"></i><code>GetMonthEvents</code> Retrieves current month events
+			</p>
+			<p>
+				<i class="fa fa-paw"></i><code>GetDate</code> Retrieves selected date
+			</p>
+			<pre>
+				<code data-language="html">
+&lt;script>
+    var events = $('#calendar').RegalCalendar('GetEvents');
+&lt;/script>
+					
+				
+				</code>
+			</pre>
+		</section>
+		<section id="customization">
+			<div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="section-heading text-center">Customization</h3>
+						<hr class="light">
+						<p>
+							<i class="fa fa-paw"></i>You can change the color scheme and add multiple behaviours to the calendar. Here is the complete list of options.</p>
+						<table class="table table-bordered table-striped responsive-utilities" style="text-align:left">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Default</th>
+									<th>Values</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>
+										<code>base</code>
+									</th>
+									<td class="is-visible">Defines base colour</td>
+									<td class="is-hidden">'white'</td>
+									<td class="is-hidden">'white', 'dark'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>compact</code>
+									</th>
+									<td class="is-visible">reduce the size of the calendar to minimun</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">true, false</td>
+								</tr>
+								<tr>
+									<th>
+										<code>color</code>
+									</th>
+									<td class="is-visible">Color scheme</td>
+									<td class="is-hidden">'#9EC02B'</td>
+									<td class="is-hidden">Hex color</td>
+								</tr>
+								<tr>
+									<th>
+										<code>enter</code>
+									</th>
+									<td class="is-visible">enter animation for tooltips.</td>
+									<td class="is-hidden">'fadeInUp'</td>
+									<td class="is-hidden">'flash', 'shake', 'bounce', 'tada', 'swing', 'wobble', 'wiggle', 'pulse', 'flip', 'flipInX', 'flipInY', 'fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight', 'fadeInUpBig', 'fadeInDownBig', 'fadeInLeftBig', 'fadeInRightBig', 'bounceIn', 'bounceInUp', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'rotateIn', 'rotateInUpLeft', 'rotateInDownLeft', 'rotateInUpRight', 'rotateInDownRight', 'lightSpeedIn', 'hinge', 'rollIn'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>exit</code>
+									</th>
+									<td class="is-visible">exit animation for tooltips.</td>
+									<td class="is-hidden">'fadeOutDown'</td>
+									<td class="is-hidden">'flash', 'shake', 'bounce', 'tada', 'swing', 'wobble', 'wiggle', 'pulse', 'flip', 'flipOutX', 'flipOutY', 'fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight', 'fadeOutUpBig', 'fadeOutDownBig', 'fadeOutLeftBig', 'fadeOutRightBig', 'bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'rotateOut', 'rotateOutUpLeft', 'rotateOutDownLeft', 'rotateOutUpRight', 'rotateOutDownRight', 'lightSpeedOut', 'hinge', 'rollOut'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>show</code>
+									</th>
+									<td class="is-visible">name of the event to show tooltips</td>
+									<td class="is-hidden">'click'</td>
+									<td class="is-hidden">'mouseenter', 'click', 'dbclick'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>startWeek</code>
+									</th>
+									<td class="is-visible">day number that calendar starts, 0 is for sunday, 1 is for monday...</td>
+									<td class="is-hidden">0</td>
+									<td class="is-hidden">0, 1, 2, 3, 4, 5, 6</td>
+								</tr>
+								<tr>
+									<th>
+										<code>tooltipPosition</code>
+									</th>
+									<td class="is-visible">tooltip position in relation with day number</td>
+									<td class="is-hidden">'top'</td>
+									<td class="is-hidden">'top', 'bottom', 'right', 'left'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>defaultDate</code>
+									</th>
+									<td class="is-visible">Default selected date/td>
+										<td class="is-hidden">null</td>
+										<td class="is-hidden">a date dd/mm/yy</td>
+								</tr>
+								<tr>
+									<th>
+										<code>mnDate</code>
+									</th>
+									<td class="is-visible">min date range</td>
+									<td class="is-hidden">null</td>
+									<td class="is-hidden">a date dd/mm/yy</td>
+								</tr>
+								<tr>
+									<th>
+										<code>mxDate</code>
+									</th>
+									<td class="is-visible">max date range</td>
+									<td class="is-hidden">null</td>
+									<td class="is-hidden">a date dd/mm/yy</td>
+								</tr>
+								<tr>
+									<th>
+										<code>timeFormat</code>
+									</th>
+									<td class="is-visible">time format (ampm/hrs) for events containers</td>
+									<td class="is-hidden">'ampm'</td>
+									<td class="is-hidden">'ampm', 'hrs'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>inputDate</code>
+									</th>
+									<td class="is-visible">input element that will receive date</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">
+										<code>'$("#myinput")'</code>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<code>inputEvent</code>
+									</th>
+									<td class="is-visible">input element that will receive event title</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">
+										<code>'$("#myinput")'</code>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<code>inputLocation</code>
+									</th>
+									<td class="is-visible">input element that will receive event location</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">
+										<code>'$("#myinput")'</code>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<code>twitter</code>
+									</th>
+									<td class="is-visible">twitter username</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">'@myusername'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>twitterText</code>
+									</th>
+									<td class="is-visible">default text for new tweet</td>
+									<td class="is-hidden">'Attend to'</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>eventsPosition</code>
+									</th>
+									<td class="is-visible">events position</td>
+									<td class="is-hidden">'tooltip'</td>
+									<td class="is-hidden">'tooltip', 'inline', 'lightbox'</td>
+								</tr>
+								<tr>
+									<th>
+										<code>itemsPerPage</code>
+									</th>
+									<td class="is-visible">items per page when eventsPosition is set to inline</td>
+									<td class="is-hidden">2</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>dayPanel</code>
+									</th>
+									<td class="is-visible">position of the day panel</td>
+									<td class="is-hidden">'inline'</td>
+									<td class="is-hidden">'inline', 'floating', false</td>
+								</tr>
+								<tr>
+									<th>
+										<code>apiUrl</code>
+									</th>
+									<td class="is-visible">weather service url</td>
+									<td class="is-hidden">'http://api.openweathermap.org/data/2.5/forecast/daily'</td>
+									<td class="is-hidden"></td>
+								</tr>
+								<tr>
+									<th>
+										<code>apiKey</code>
+									</th>
+									<td class="is-visible">weather service key</td>
+									<td class="is-hidden">''</td>
+									<td class="is-hidden">a key</td>
+								</tr>
+								<tr>
+									<th>
+										<code>weatherLanguaje</code>
+									</th>
+									<td class="is-visible">weather service languaje</td>
+									<td class="is-hidden">'en'</td>
+									<td class="is-hidden">English - en, Russian - ru, Italian - it, Spanish - es (or sp), Ukrainian - uk (or ua), German - de, Portuguese - pt, Romanian - ro, Polish - pl, Finnish - fi, Dutch - nl, French - fr, Bulgarian - bg, Swedish - sv (or se), Chinese Traditional - zh_tw, Chinese Simplified - zh (or zh_cn), Turkish - tr, Croatian - hr, Catalan - ca</td>
+								</tr>
+								<tr>
+									<th>
+										<code>dateFormat</code>
+									</th>
+									<td class="is-visible">output date format dd/mm/yy = 26/11/1983, yy/mm/dd = 1983/11/26</td>
+									<td class="is-hidden">dd/mm/yy</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>monthNames</code>
+									</th>
+									<td class="is-visible">month names</td>
+									<td class="is-hidden">[ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>dayNames</code>
+									</th>
+									<td class="is-visible">full day names</td>
+									<td class="is-hidden">['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>dayNamesMin</code>
+									</th>
+									<td class="is-visible">reduced day names</td>
+									<td class="is-hidden">['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' ]</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>url</code>
+									</th>
+									<td class="is-visible">url to search tweets</td>
+									<td class="is-hidden">'php/twitter.php'</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>editable</code>
+									</th>
+									<td class="is-visible">disable / enable edit mode</td>
+									<td class="is-hidden">false</td>
+									<td class="is-hidden">false, true</td>
+								</tr>
+								<tr>
+									<th>
+										<code>subscribe</code>
+									</th>
+									<td class="is-visible">disable / enable subscriptions</td>
+									<td class="is-hidden">true</td>
+									<td class="is-hidden">false, true</td>
+								</tr>
+								<tr>
+									<th>
+										<code>sourceURL</code>
+									</th>
+									<td class="is-visible">url to retrieve events</td>
+									<td class="is-hidden">'php/GetCalendar.php?mode=1'</td>
+									<td class="is-hidden">-</td>
+								</tr>
+								<tr>
+									<th>
+										<code>editableURL</code>
+									</th>
+									<td class="is-visible">url to create an event</td>
+									<td class="is-hidden">'php/UpdateCalendar.php'</td>
+									<td class="is-hidden">-</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
+		<script src="js/jquery-scrollspy.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.fittext.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/creative.js"></script>
+	</body>
+
+</html>

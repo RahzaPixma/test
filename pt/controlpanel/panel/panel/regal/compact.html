@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Regal Calendar SQL</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/weather-icons.min.css">
+		<link rel="stylesheet" href="css/RegalCalendar.css">
+		<link href="css/github.css" rel="stylesheet" />
+		<script src="js/lib/rainbow-custom.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+		<script src="js/lib/require.js"></script>
+		<script src="js/lib/init.js"></script>
+		<script>
+			requirejs(libs, function($) {
+				$('#calendar').RegalCalendar({
+					base: 'dark',
+					color: '#e49a00',
+					editable: false,
+					eventsPosition: 'tooltip',
+					compact: true,
+					enter: 'bounceIn',
+					exit: 'bounceOut',
+					weatherLanguaje: 'de',
+					monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+					dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+					dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+					dayPanel: false
+				});
+			});
+		</script>
+		<style>
+			body {
+				background: url('img/dark_embroidery.png') repeat;
+			}
+			.section-heading {
+				margin-top: 70px;
+			}
+			h5 {
+				text-align: left;
+			}
+			p i {
+				margin-right: 10px;
+				color: #e49a00;
+			}
+			.container-fluid {
+				background: #e49a00;
+			}
+			.container h2 {
+				color: #FFF;
+			}
+			.navbar-default .navbar-brand {
+				color: #FFF;
+			}
+			p.feature {
+				margin: 0;
+				padding: 0;
+				font-weight: bold;
+				color: #FFF;
+			}
+			pre, code, p.feature {
+				text-align: left;
+			}
+			.compact, .side {
+				margin: 0 5px;
+				display:inline-block;
+				vertical-align: top;
+			}
+			
+		</style>
+	</head>
+	<body id="page-top">
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand page-scroll" href="#page-top">Regal Calendar SQL</a>
+				</div>
+			</div>
+		</nav>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 class="section-heading">Compact calendar</h2>
+						<hr class="primary">
+						<div class="content">
+							<div id="calendar" class="regalcalendar"></div>
+							<div class="side">
+								<p class="feature">
+									<i class="fa fa-paw"></i>Default small size</p>
+								<p class="feature">
+									<i class="fa fa-paw"></i>Custom animations</p>
+								<p class="feature">
+									<i class="fa fa-paw"></i>Disable top panel</p>
+								<p class="feature">
+									<i class="fa fa-paw"></i>Set language</p>
+							</div>
+						</div>
+						<pre>
+							<code data-language="html">&lt;script>
+    $('#calendar').RegalCalendar({
+	  base: 'dark',
+	  color: '#e49a00',
+	  editable: false,
+	  eventsPosition: 'tooltip',
+	  compact: true,
+	  enter: 'bounceIn',
+          exit: 'bounceOut',
+	  weatherLanguaje: 'de',
+	  monthNames: ['Januar','Februar','März','April','Mai','Juni', 'Juli','August','September','Oktober','November','Dezember'],
+	  dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+	  dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+	  dayPanel: false
+    });
+&lt;/script>
+				</code>
+						</pre>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>

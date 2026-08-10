@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Kalendar Jadual Kuliah</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/weather-icons.min.css">
+		<link rel="stylesheet" href="css/RegalCalendar.css">
+		<link href="css/github.css" rel="stylesheet" />
+		<script src="js/lib/rainbow-custom.min.js"></script>
+		<script src="js/lib/require.js"></script>
+		<script src="js/lib/init.js"></script>
+		<script>
+			requirejs(libs, function($) {
+				$('#calendar').RegalCalendar({
+					base: 'white',
+					color: '#009292',
+					editable: false,
+					eventsPosition: 'tooltip',
+					itemsPerPage: 2,
+					timeFormat: 'ampm',		
+
+subcribe: false,
+inputLocation: false,
+
+show: 'click',
+dateFormat: 'dd-mm-yy',					
+monthNames: [ 'Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember' ],
+dayNames: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'],
+dayNamesMin:['AHAD', 'ISNIN', 'SELASA', 'RABU', 'KHAMIS', 'JUMAAT', 'SABTU' ]					
+					
+					
+				});
+			});
+		</script>
+		<style>
+			body {
+				background: url('img/school.png') repeat;
+			}
+			.section-heading {
+				margin-top: 70px;
+			}
+			h5 {
+				text-align: left;
+			}
+			p i {
+				margin-right: 10px;
+				color: #009292;
+			}
+			.container-fluid {
+				background: #009292;
+			}
+			.navbar-default .navbar-brand {
+				color: #FFF;
+			}
+			p.feature {
+				margin: 0;
+				padding: 0;
+				font-weight: bold;
+				color: #555;
+			}
+			pre, code, p.feature {
+				text-align: left;
+			}
+			
+		</style>
+	</head>
+	<body id="page-top">
+
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<hr class="primary">
+						<div id="calendar" class="regalcalendar"></div>				
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>
