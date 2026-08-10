@@ -1,5 +1,6 @@
+# BEGIN prayer-time-display
 # Prayer Time display maintenance cron
-# Install with: crontab cron/pt-crontab
+# Installed/updated by scripts/install.sh. Safe to re-run installer; this block is replaced.
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -8,3 +9,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Keep the sync flag file present for the startup redirect screen.
 @reboot /bin/mkdir -p /var/www/html/pt/controlpanel/panel/panel/chktime && /bin/touch /var/www/html/pt/controlpanel/panel/panel/chktime/flagsync.dat
+# END prayer-time-display
