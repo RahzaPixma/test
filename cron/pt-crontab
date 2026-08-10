@@ -1,0 +1,10 @@
+# Prayer Time display maintenance cron
+# Install with: crontab cron/pt-crontab
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Remove expired one-off kuliah records daily after midnight.
+5 0 * * * cd /var/www/html/pt/controlpanel/panel/panel && /usr/bin/php script_autodelete.php >/dev/null 2>&1
+
+# Keep the sync flag file present for the startup redirect screen.
+@reboot /bin/mkdir -p /var/www/html/pt/controlpanel/panel/panel/chktime && /bin/touch /var/www/html/pt/controlpanel/panel/panel/chktime/flagsync.dat
