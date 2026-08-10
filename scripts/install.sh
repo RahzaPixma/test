@@ -35,18 +35,143 @@ sql_quote() {
 
 require_file() {
   if [ ! -f "$1" ]; then
-    echo "Missing required file: $1" >&2
+    echo "Missing required file: $1"
     exit 1
   fi
 }
 
+check_command() {
+  label=$1
+  bin=$2
+  if command -v "$bin" >/dev/null 2>&1; then
+    printf '   [OK] %s found: %s\n' "$label" "$(command -v "$bin")"
+    return 0
+  fi
+  printf '   [FAIL] %s not found: %s\n' "$label" "$bin"
+  return 1
+}
+
+check_any_command() {
+  label=$1
+  shift
+  for bin in "$@"; do
+    if command -v "$bin" >/dev/null 2>&1; then
+      printf '   [OK] %s found: %s (%s)\n' "$label" "$bin" "$(command -v "$bin")"
+      return 0
+    fi
+  done
+  printf '   [FAIL] %s not found. Checked: %s\n' "$label" "$*"
+  return 1
+}
+
+check_service_hint() {
+  service_name=$1
+  if command -v systemctl >/dev/null 2>&1; then
+    if systemctl list-unit-files "$service_name.service" >/dev/null 2>&1; then
+      printf '   [OK] service unit exists: %s.service\n' "$service_name"
+      return 0
+    fi
+  fi
+  if command -v service >/dev/null 2>&1; then
+    if service "$service_name" status >/dev/null 2>&1; then
+      printf '   [OK] service responds: %s\n' "$service_name"
+      return 0
+    fi
+  fi
+  return 1
+}
+
+check_web_server() {
+  if check_any_command 'web server binary' apache2 httpd nginx; then
+    return 0
+  fi
+  if check_service_hint apache2 || check_service_hint httpd || check_service_hint nginx; then
+    return 0
+  fi
+  printf '   [FAIL] Apache/Nginx not detected. Install apache2/httpd or nginx before running this app.\n'
+  return 1
+}
+
+check_database_server() {
+  if check_service_hint mariadb || check_service_hint mysql; then
+    return 0
+  fi
+  if command -v mysqladmin >/dev/null 2>&1; then
+    if mysqladmin -h "$DB_HOST" ping >/dev/null 2>&1; then
+      printf '   [OK] MySQL/MariaDB server responds on host: %s\n' "$DB_HOST"
+      return 0
+    fi
+  fi
+  printf '   [FAIL] MySQL/MariaDB server not detected/responding. Install/start mariadb-server or mysql-server.\n'
+  return 1
+}
+
+run_preflight_checks() {
+  printf '==> Preflight checks (step-by-step)\n'
+  errors=0
+
+  printf '1/8 Checking required project files\n'
+  if [ -f "$SCHEMA_FILE" ] && [ -f "$CRON_FILE" ]; then
+    printf '   [OK] schema and cron files exist\n'
+  else
+    printf '   [FAIL] required schema or cron file missing\n'
+    errors=$((errors + 1))
+  fi
+
+  printf '2/8 Checking Apache/Nginx installation\n'
+  check_web_server || errors=$((errors + 1))
+
+  printf '3/8 Checking PHP CLI\n'
+  if [ "$UPDATE_DB_CONFIG" = "1" ]; then
+    check_command 'php CLI' php || errors=$((errors + 1))
+  else
+    printf '   [SKIP] UPDATE_DB_CONFIG=0, PHP CLI is not required for config rewrite\n'
+  fi
+
+  printf '4/8 Checking configured PHP binary for cron\n'
+  if [ -x "$PHP_BIN" ]; then
+    printf '   [OK] PHP_BIN is executable: %s\n' "$PHP_BIN"
+  else
+    printf '   [FAIL] PHP_BIN is not executable: %s\n' "$PHP_BIN"
+    errors=$((errors + 1))
+  fi
+
+  printf '5/8 Checking MySQL/MariaDB client\n'
+  check_command 'mysql client' "$MYSQL_BIN" || errors=$((errors + 1))
+
+  printf '6/8 Checking MySQL/MariaDB server\n'
+  check_database_server || errors=$((errors + 1))
+
+  printf '7/8 Checking cron/crontab\n'
+  if [ "$INSTALL_CRON" = "1" ]; then
+    check_command 'crontab' crontab || errors=$((errors + 1))
+  else
+    printf '   [SKIP] INSTALL_CRON=0, crontab is not required\n'
+  fi
+
+  printf '8/8 Checking application connection files\n'
+  if [ "$UPDATE_DB_CONFIG" = "1" ]; then
+    if [ -f "$CONN_FILE" ] && [ -f "$CONN_CLI_FILE" ]; then
+      printf '   [OK] connection files exist\n'
+    else
+      printf '   [FAIL] conn.php or conn_cli.php missing\n'
+      errors=$((errors + 1))
+    fi
+  else
+    printf '   [SKIP] UPDATE_DB_CONFIG=0, connection files will not be modified\n'
+  fi
+
+  if [ "$errors" -gt 0 ]; then
+    printf '\nPreflight completed with %s problem(s). Fix the items above and run again.\n' "$errors"
+    exit 1
+  fi
+  printf 'Preflight completed successfully.\n\n'
+}
+
+run_preflight_checks
+
 require_file "$SCHEMA_FILE"
 require_file "$CRON_FILE"
-
-command -v "$MYSQL_BIN" >/dev/null 2>&1 || { echo "mysql client not found. Set MYSQL_BIN or install mysql/mariadb client." >&2; exit 1; }
-if [ "$UPDATE_DB_CONFIG" = "1" ]; then
-  command -v php >/dev/null 2>&1 || { echo "php CLI not found. Install php-cli or run with UPDATE_DB_CONFIG=0." >&2; exit 1; }
-fi
 
 printf '==> Importing database schema: %s\n' "$SCHEMA_FILE"
 mysql_admin < "$SCHEMA_FILE"

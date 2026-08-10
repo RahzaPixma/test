@@ -55,7 +55,18 @@ PHP_BIN=/usr/bin/php \
 ./scripts/install.sh
 ```
 
-Installer akan:
+Installer akan buat semakan step-by-step sampai habis sebelum mula install:
+
+1. Semak fail schema dan cron wujud.
+2. Semak Apache/Nginx telah dipasang.
+3. Semak PHP CLI.
+4. Semak `PHP_BIN` yang digunakan oleh cron boleh execute.
+5. Semak MySQL/MariaDB client.
+6. Semak MySQL/MariaDB server/service.
+7. Semak `crontab` jika `INSTALL_CRON=1`.
+8. Semak fail connection PHP jika `UPDATE_DB_CONFIG=1`.
+
+Selepas preflight lulus, installer akan:
 
 1. Import `database/pt_schema.sql`.
 2. Create user MySQL aplikasi jika `DB_USER` bukan `root`.
@@ -142,7 +153,42 @@ Cron project melakukan dua perkara:
 - Setiap hari jam `00:05`, jalankan `script_autodelete.php` untuk buang rekod kuliah one-off lama.
 - Semasa reboot, pastikan folder `chktime` dan fail `flagsync.dat` wujud.
 
-## 9. Semakan selepas install
+## 9. Jika preflight gagal
+
+Installer akan terus semak semua item dahulu dan hanya berhenti selepas semua keputusan dipaparkan. Contoh perkara yang perlu dibetulkan:
+
+- Jika `Apache/Nginx not detected`, install web server:
+
+```sh
+sudo apt install apache2
+```
+
+atau:
+
+```sh
+sudo apt install nginx
+```
+
+- Jika `MySQL/MariaDB server not detected/responding`, install/start MariaDB:
+
+```sh
+sudo apt install mariadb-server mariadb-client
+sudo systemctl enable --now mariadb
+```
+
+- Jika `PHP_BIN is not executable`, set path PHP yang betul:
+
+```sh
+PHP_BIN=$(command -v php) ./scripts/install.sh
+```
+
+- Jika mahu semak DB/cron sahaja tanpa rewrite fail connection PHP:
+
+```sh
+UPDATE_DB_CONFIG=0 ./scripts/install.sh
+```
+
+## 10. Semakan selepas install
 
 Semak table wujud:
 
